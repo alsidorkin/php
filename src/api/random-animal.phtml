@@ -17,14 +17,32 @@ $cat = json_decode($dataCat, true)
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 
+<style>
+        .img-box {
+                overflow: hidden;
+            }
+            .img-box img {
+                width: 600px; 
+                height: 600px; 
+                transition: transform 0.3s ease; 
+            }
+            .img-box:hover img {
+                transform: scale(1.1); 
+            }
+        </style>
+
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
+            <div class="img-box">
                 <img src="<?= $dog['message'] ?>" alt="">
             </div>
+            </div>
             <div class="col-md-6">
+            <div class="img-box">
                 <img src="<?= $cat[1]['url'] ?>" alt="">
+            </div>
             </div>
         </div>
     </div>
