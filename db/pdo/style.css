@@ -1,0 +1,39 @@
+body{
+    background-color: blueviolet;
+}
+
+
+.button,tbody .button{
+    background-color: greenyellow;
+    border-radius: 25%;
+    padding: 7px;
+    color:black;
+    font-size: 20px;
+    text-decoration: none;
+}
+.button:hover{
+    background-color: blue;
+    color:yellow;
+    text-decoration: none; 
+}
+.addProduct {
+    text-align: center;
+    color: rgb(13, 13, 17);
+}
+
+tbody{
+    background-color: #b6b9b9;
+  }
+thead{
+    background-color: #42da07;
+  }
+a {
+    font-size: 30px;
+    color: red;
+    text-decoration: none;
+}
+a:hover{
+    color: rgb(234, 243, 243);
+   
+
+}

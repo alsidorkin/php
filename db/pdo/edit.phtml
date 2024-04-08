@@ -1,0 +1,74 @@
+<?php
+require_once 'product.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="head"><a href="index.phtml">Главная</a></div>
+  <div class="addProduct">
+    <h2>Edit product</h2>
+  </div>
+  <div class="container">
+    <form class="row g-3" method="POST" action="/db/pdo/index.phtml">
+      <div class="col-md-2">
+        <label for="inputEmail4" class="form-label">productCode</label>
+        <input name="productCode" type="text" value="<?= $productCode ?>" class="form-control" readonly>
+        <input name="id" type="hidden" value="<?= $productCode ?>">
+      </div>
+      <div class="col-md-6">
+        <label for="productName" class="form-label">productName</label>
+        <input name="productName" type="text" class="form-control" value="<?= $productName ?>">
+      </div>
+      <div class="col-md-6">
+        <label for="productLine" class="form-label">productLine</label>
+        <input name="productLine" type="text" class="form-control" value="<?= $productLine ?>">
+      </div>
+      <div class="col-2">
+        <label for="productScale" class="form-label">productScale</label>
+        <input name="productScale" type="text" class="form-control" value="<?= $productScale ?>">
+      </div>
+      <div class="col-5">
+        <label for="productVendor" class="form-label">productVendor</label>
+        <input name="productVendor" type="text" class="form-control" value="<?= $productVendor ?>">
+      </div>
+      <div class="w-100"></div>
+      <div class="col-md-2">
+        <label for="quantityInStock" class="form-label">quantityInStock</label>
+        <input name="quantityInStock" type="text" class="form-control" value="<?= $quantityInStock ?>">
+      </div>
+      <div class="col-md-2">
+        <label for="buyPrice" class="form-label">buyPrice</label>
+        <input name="buyPrice" type="text" class="form-control" value="<?= $buyPrice ?>">
+      </div>
+      <div class="col-md-2">
+        <label for="MSRP" class="form-label">MSRP</label>
+        <input name="MSRP" type="text" class="form-control" value="<?= $MSRP ?>">
+      </div>
+      <div class="col-6">
+        <label for="productDescription" class="form-label">productDescription</label>
+        <textarea name="productDescription" id="" cols="50" rows="2"> <?= $productDescription ?></textarea>
+      </div>
+      <div class="col-12">
+        <button name="edit_product" type="submit" class="btn btn-primary">Edit product</button>
+      </div>
+
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
