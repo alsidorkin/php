@@ -1,0 +1,157 @@
+<?php
+echo '<pre>';
+//5 declarive functions which will be do something
+function select($values, $select = 0)
+{
+    $text = '';
+    foreach ($values as $key => $value) {
+        if ($key === $select) {
+            echo $ch = 'selected';
+        } else {
+            $ch = '';
+        }
+        $text .= "<option $ch value=$key>$value</option>";
+    }
+    return $text;
+}
+
+
+function generateRandomPassword($length = 8)
+{
+    $str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $password = '';
+    for ($i = 0; $i < $length; $i++) {
+        $password .= $str[rand(0, strlen($str) - 1)];
+    }
+    return $password;
+}
+
+
+function getAge($birthdate)
+{
+    $birth_date = new DateTime($birthdate);
+    $today = new DateTime();
+    $age = $today->diff($birth_date)->y;
+    return $age;
+}
+
+function isPrime($number)
+{
+    if ($number <= 1) {
+        return false;
+    }
+    for ($i = 2; $i <= sqrt($number); $i++) {
+        if ($number % $i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function factorial($n)
+{
+    $result = 1;
+    for ($i = 2; $i <= $n; $i++) {
+        $result *= $i;
+    }
+    return $result;
+}
+
+// 3 anonymous function to processing array
+$multiplyByTwo = function ($array) {
+    $result = [];
+    foreach ($array as $item) {
+        $result[] = $item * 2;
+    }
+    return $result;
+};
+
+$square = function ($array) {
+    $result = [];
+    foreach ($array as $item) {
+        $result[] = $item ** 2;
+    }
+    return $result;
+};
+
+$filterEven = function ($array) {
+    $result = [];
+    foreach ($array as $item) {
+        if ($item % 2 === 0) {
+            $result[] = $item;
+        }
+    }
+    return $result;
+};
+
+
+// 1 arrow function which will concatenate your first and last name
+$myName = fn($first, $last) => $first . $last;
+
+// Codewars 1 fundamental task
+function countSheep($array) {
+    $sheepCount = 0;
+    foreach ($array as $sheep) {
+        if ($sheep === true) {
+            $sheepCount++;
+        }
+    }
+    
+    return $sheepCount;
+}
+
+
+
+$colors = ['green', 'red', 'blue', 'black', 'yellow'];
+
+?>
+
+
+
+<select name="" id="">
+    <?= select($colors, 3); ?>
+</select>
+
+<?php
+$numbers = [1, 2, 3, 4, 5];
+
+$birthdate = '1930-01-01';
+echo getAge($birthdate);
+
+
+
+echo "\n";
+echo generateRandomPassword($length = 18);
+
+echo "\n";
+$number = 199;
+if (isPrime($number)) {
+    echo "$number - простое число";
+} else {
+    echo "$number - не простое число";
+}
+echo "\n";
+
+$number = 5;
+echo "Факторiал числа $number: " . factorial($number);
+echo "\n";
+echo "Множення кожного елемента на 2:\n";
+print_r($multiplyByTwo($numbers));
+echo "\n";
+
+echo "Зведення кожного елемента в квадрат:\n";
+print_r($square($numbers));
+echo "\n";
+
+echo "Фильтрацiя парних чисел:\n";
+print_r($filterEven($numbers));
+echo "\n";
+
+$array = [true, true, true, true , true, true, true, true, true, false, true, false, true, false, false,
+ true, true, true, true, true, false, false, true, true];
+echo countSheep($array);
+
+echo "\n";
+echo $myName('Tom', 'Hanks');
+
+?>
