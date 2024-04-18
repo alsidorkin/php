@@ -88,19 +88,6 @@ $filterEven = function ($array) {
 // 1 arrow function which will concatenate your first and last name
 $myName = fn($first, $last) => $first . $last;
 
-// Codewars 1 fundamental task
-function countSheep($array) {
-    $sheepCount = 0;
-    foreach ($array as $sheep) {
-        if ($sheep === true) {
-            $sheepCount++;
-        }
-    }
-    
-    return $sheepCount;
-}
-
-
 
 $colors = ['green', 'red', 'blue', 'black', 'yellow'];
 
@@ -145,11 +132,6 @@ echo "\n";
 
 echo "Фильтрацiя парних чисел:\n";
 print_r($filterEven($numbers));
-echo "\n";
-
-$array = [true, true, true, true , true, true, true, true, true, false, true, false, true, false, false,
- true, true, true, true, true, false, false, true, true];
-echo countSheep($array);
 
 echo "\n";
 echo $myName('Tom', 'Hanks');
