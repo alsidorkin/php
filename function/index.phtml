@@ -2,41 +2,71 @@
 echo '<pre>';
 //5 declarive functions which will be do something
 function select($values, $select = 0)
-{
+{   
+        if (!is_array($values)) {
+            throw new Exception('Данные должны быть массивом');
+        }
+
+        try {
     $text = '';
+    $text .= '<select name="" id="">';
+
     foreach ($values as $key => $value) {
         if ($key === $select) {
-            echo $ch = 'selected';
+             $ch = 'selected';
         } else {
             $ch = '';
         }
         $text .= "<option $ch value=$key>$value</option>";
     }
+    $text .= "</select>";
     return $text;
+}catch(Exception $e){
+    echo 'Ошибка: ' .$e->getMessage();
+}
 }
 
 
 function generateRandomPassword($length = 8)
 {
+    if ($length === 0) {
+        throw new Exception('Данные не могут быть нулем');
+    }
+
+    try {
     $str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     $password = '';
     for ($i = 0; $i < $length; $i++) {
         $password .= $str[rand(0, strlen($str) - 1)];
     }
     return $password;
+}catch(Exception $e){
+    echo 'Ошибка: ' .$e->getMessage();
+}
 }
 
 
 function getAge($birthdate)
 {
+    if(!DateTime::createFromFormat('Y-m-d', $birthdate)){
+        throw new Exception('Данные должны быть в виде даты Y-m-d');
+    }
+    try{
     $birth_date = new DateTime($birthdate);
     $today = new DateTime();
     $age = $today->diff($birth_date)->y;
     return $age;
+    }catch(Exception $e){
+        echo 'Ошибка: ' .$e->getMessage();
+    }
 }
 
 function isPrime($number)
 {
+    if (!is_numeric($number)) {
+        throw new Exception('Данные должны быть числом');
+    } 
+
     if ($number <= 1) {
         return false;
     }
@@ -50,11 +80,16 @@ function isPrime($number)
 
 function factorial($n)
 {
+    
+        if (!is_numeric($n)) {
+            throw new Exception('Данные должны быть числом');
+        }
     $result = 1;
     for ($i = 2; $i <= $n; $i++) {
         $result *= $i;
     }
     return $result;
+
 }
 
 // 3 anonymous function to processing array
@@ -91,15 +126,9 @@ $myName = fn($first, $last) => $first . $last;
 
 $colors = ['green', 'red', 'blue', 'black', 'yellow'];
 
-?>
+echo select($colors, 3);
+echo "\n";
 
-
-
-<select name="" id="">
-    <?= select($colors, 3); ?>
-</select>
-
-<?php
 $numbers = [1, 2, 3, 4, 5];
 
 $birthdate = '1930-01-01';
@@ -108,22 +137,30 @@ echo getAge($birthdate);
 
 
 echo "\n";
-echo generateRandomPassword($length = 18);
+echo generateRandomPassword(10);
 
 echo "\n";
-$number = 199;
+$number = 6;
+try {
 if (isPrime($number)) {
     echo "$number - простое число";
 } else {
     echo "$number - не простое число";
 }
+}catch(Exception $e){
+    echo 'Ошибка: ' . $e->getMessage();
+}
 echo "\n";
 
-$number = 5;
+$number = 8;
+try {
 echo "Факторiал числа $number: " . factorial($number);
 echo "\n";
 echo "Множення кожного елемента на 2:\n";
 print_r($multiplyByTwo($numbers));
+}catch(Exception $e){
+    echo 'Ошибка: ' . $e->getMessage();
+}
 echo "\n";
 
 echo "Зведення кожного елемента в квадрат:\n";
@@ -136,4 +173,4 @@ print_r($filterEven($numbers));
 echo "\n";
 echo $myName('Tom', 'Hanks');
 
-?>
+ 
