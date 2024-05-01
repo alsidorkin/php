@@ -1,0 +1,1 @@
+a:4:{s:10:"session_id";s:32:"3cb25c9c31afcd04855c49244d48a8ce";s:2:"id";i:33;s:4:"name";s:4:"Alex";s:3:"age";i:55;}
