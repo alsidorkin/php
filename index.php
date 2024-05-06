@@ -9,7 +9,6 @@
 //  include "function/index.phtml";
 //  include "session/index.php";
 //  include "session/index_session.php";
-//  include "session/session_decoder.php";
-//  include "session/test_session.php";
- include "session/my_session.php";
+//  include "session/my_session.php";
+  include "strings/index.php";
 
